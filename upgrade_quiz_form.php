@@ -110,7 +110,7 @@
             $quiz_column2=mysqli_fetch_all($result2);
 
             if($num_rows>0){
-                echo '<div class="container"><form method="GET" action="upgrade_quiz.php">';
+                echo '<div class="container"><form method="GET" action="send_answers.php"><input type="hidden" name="quiz_id" value="'.$quiz_id.'">';
                 for ($i=1;$i<$num_rows;$i++){
                     echo '<div class="form-group mt-3">
                         <label>'.$quiz_column[$i][0].'</label>';
@@ -124,7 +124,7 @@
                         else
                             $quiz_type[$i]='type="text" minlength="1" maxlength="255"';
 
-                        echo '<input '.$quiz_type[$i].' name="question" placeholder="'.$quiz_column[$i][0].'" class="form-control" required></div>';
+                        echo '<input '.$quiz_type[$i].' name="'.$quiz_column[$i][0].'" placeholder="'.$quiz_column[$i][0].'" class="form-control" required></div>';
                 }
                 echo '<div class="form-group mt-3">
                     <button type="submit" name="submit" value="add_question" class="btn btn-primary">
