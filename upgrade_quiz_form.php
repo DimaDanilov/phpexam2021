@@ -24,6 +24,35 @@
 
     <div class="container mt-5 px-5">
         <h1>Опрос <?php echo $quiz_id;?></h1>
+
+        <?php
+            $host = 'localhost';
+            $user = 'root';
+            $password = '';
+            $db = 'quiz_baze';
+            
+            $a=mysqli_connect($host,$user,$password,$db);
+            mysqli_select_db($a,$db);
+            
+            $sql="select column_name from INFORMATION_SCHEMA.COLUMNS where TABLE_NAME='quiz_$quiz_id'";
+            $result=mysqli_query($a, $sql);
+
+            $num_rows=mysqli_num_rows($result);
+            $quiz_column=mysqli_fetch_all($result);
+        
+            if($num_rows>0){
+                echo '<table class="table mt-3"><thead class="thead-dark"><tr></tr>';
+                for ($i=0;$i<$num_rows;$i++)
+                echo '<td scope="col">'.$quiz_column[$i][0].'</td>';
+                echo '</thead></table>';
+            } else echo 'Нет вопросов';
+
+            ?>
+
+
+
+
+
         <h2>Добавить вопросы</h2>
         <form method="GET" action="upgrade_quiz.php">
             <input type="hidden" name="quiz_id" value="<?php echo $quiz_id; ?>">

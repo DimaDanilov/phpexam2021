@@ -39,7 +39,7 @@
             if($num_rows!=0){
                 echo'<table class="table mt-3">
                 <thead class="thead-dark">
-                    <tr class="quiz_tr_main">
+                    <tr>
                         <td scope="col">#</td>
                         <td scope="col">Название опроса</td>
                         <td scope="col">Ссылка</td>
@@ -60,7 +60,7 @@
                         <td>'.$quiz_data[$i][1].'</td>
                         <td>'.$quiz_data[$i][2].'</td>
                         <td>'.$status[$i].'<a href="change_quiz_status.php?id='.$quiz_data[$i][0].'&status='.$quiz_data[$i][3].'"><img src="icons/status.svg" style="max-width: 40px;"></td>
-                        <td><a href="upgrade_quiz_form.php?quiz_id='.$quiz_data[$i][0].'"><img src="icons/add.svg" style="max-width: 40px;"></td>
+                        <td><a href="upgrade_quiz_form.php?quiz_id='.$quiz_data[$i][0].'"><img src="icons/question.svg" style="max-width: 40px;"></td>
                         <td><a href="delete_quiz.php?id='.$quiz_data[$i][0].'"><img src="icons/delete.svg" style="max-width: 40px;"></a></td>
                     </tr>');
                     
