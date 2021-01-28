@@ -29,17 +29,21 @@
             <input type="hidden" name="quiz_id" value="<?php echo $quiz_id; ?>">
             <div class="form-group mt-3">
                 <label>Выберите тип данных в вопросе</label>
-                <select class="form-select">
+                <select class="form-select" name="question_type">
                     <option disabled>Выберите тип данных</option>
-                    <option selected value="Число">Число</option>
-                    <option value="Положительное число">Положительное число</option>
-                    <option value="Строка">Строка</option>
-                    <option value="Текст">Текст</option>
+                    <option selected value="int">Число</option>
+                    <option value="positive_int">Положительное число</option>
+                    <option value="string">Строка</option>
+                    <option value="text">Текст</option>
                 </select>
             </div>
             <div class="form-group mt-3">
                     <label>Вопрос</label>
                     <input type="text" name="question" placeholder="Введите вопрос для опроса" class="form-control" required>
+            </div>
+            <div class="form-group mt-3">
+                    <label>Поле для бд(ENG)</label>
+                    <input type="text" name="databasefield" placeholder="Введите вопрос для опроса" class="form-control" required>
             </div>
             <div class="form-group mt-3">
                 <button type="submit" name="submit" value="add_question" class="btn btn-primary">
