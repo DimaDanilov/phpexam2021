@@ -44,7 +44,7 @@
                         <td scope="col">Название опроса</td>
                         <td scope="col">Ссылка</td>
                         <td scope="col">Статус</td>
-                        <td scope="col">Добавить</td>
+                        <td scope="col">Вопросы</td>
                         <td scope="col">Удалить</td>
                     </tr>
                 </thead>

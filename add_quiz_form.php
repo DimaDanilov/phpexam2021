@@ -8,6 +8,11 @@
 </head>
 <body>
 
+    <?php
+    session_start();
+    if (isset($_SESSION['admin'])): ?>
+    <!-- Если вошёл -->
+
     <header class="py-3 bg-dark d-flex justify-content-end">
         <a href="admin_page.php" class="btn btn-light">Вернуться</a>
         <a href="exit.php" class="btn btn-light mx-5">Выйти</a>
@@ -34,6 +39,15 @@
             </div>
         </form>
     </div>
+
+    <?php else: ?>
+        <!-- Если не вошёл -->
+        <header class="py-3 bg-dark d-flex justify-content-end">
+            <a href="index.php" class="btn btn-light mx-5">Войти</a>
+        </header>
+        <h1 class="text-center mt-5">Вы не вошли в систему!</h1>
+
+    <?php endif; ?>
     
 </body>
 </html>
