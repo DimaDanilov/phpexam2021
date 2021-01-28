@@ -23,7 +23,7 @@
             exit();
         }
         else{
-            echo " You Have Entered Incorrect Password";
+            echo "Вы ввели неправильный пароль";
             exit();
         }
     }
