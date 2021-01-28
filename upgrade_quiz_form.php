@@ -83,7 +83,58 @@
         <header class="py-3 bg-dark d-flex justify-content-end">
             <a href="index.php" class="btn btn-light mx-5">Войти</a>
         </header>
-        <h1 class="text-center mt-5">Вы не вошли в систему!</h1>
+
+        <?php
+
+            $host = 'localhost';
+            $user = 'root';
+            $password = '';
+            $db = 'quiz_baze';
+            
+            $a=mysqli_connect($host,$user,$password,$db);
+            mysqli_select_db($a,$db);
+            
+            $quiz_id=$_GET['quiz_id'];
+            echo '<div class="container mt-3"><h1>Опрос'.$quiz_id.'</h1></div>';
+
+
+            $sql="select column_name from INFORMATION_SCHEMA.COLUMNS where TABLE_NAME='quiz_$quiz_id'";
+            $result=mysqli_query($a, $sql);
+
+            $num_rows=mysqli_num_rows($result);
+            $quiz_column=mysqli_fetch_all($result);
+
+            $sql2="select column_type from INFORMATION_SCHEMA.COLUMNS where TABLE_NAME='quiz_$quiz_id'";
+            $result2=mysqli_query($a, $sql2);
+
+            $quiz_column2=mysqli_fetch_all($result2);
+
+            if($num_rows>0){
+                echo '<div class="container"><form method="GET" action="upgrade_quiz.php">';
+                for ($i=1;$i<$num_rows;$i++){
+                    echo '<div class="form-group mt-3">
+                        <label>'.$quiz_column[$i][0].'</label>';
+
+                        if ($quiz_column2[$i][0]=='int(11)')
+                            $quiz_type[$i]='type="number"';
+                        else if ($quiz_column2[$i][0]=='int(11) unsigned')
+                            $quiz_type[$i]='type="number" min="0"';
+                        else if ($quiz_column2[$i][0]=='varchar(30)'){
+                            $quiz_type[$i]='type="text" minlength="1" maxlength="30"';}
+                        else
+                            $quiz_type[$i]='type="text" minlength="1" maxlength="255"';
+
+                        echo '<input '.$quiz_type[$i].' name="question" placeholder="'.$quiz_column[$i][0].'" class="form-control" required></div>';
+                }
+                echo '<div class="form-group mt-3">
+                    <button type="submit" name="submit" value="add_question" class="btn btn-primary">
+                        Добавить ответ
+                    </button>
+                </div></form></div>';
+            } else echo 'Нет вопросов';
+        
+        ?>
+
 
     <?php endif; ?>
     
