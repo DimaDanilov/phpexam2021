@@ -38,12 +38,8 @@
                 </select>
             </div>
             <div class="form-group mt-3">
-                    <label>Вопрос</label>
+                    <label>Вопрос(писать без пробелов)</label>
                     <input type="text" name="question" placeholder="Введите вопрос для опроса" class="form-control" required>
-            </div>
-            <div class="form-group mt-3">
-                    <label>Поле для бд(ENG)</label>
-                    <input type="text" name="databasefield" placeholder="Введите вопрос для опроса" class="form-control" required>
             </div>
             <div class="form-group mt-3">
                 <button type="submit" name="submit" value="add_question" class="btn btn-primary">

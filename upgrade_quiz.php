@@ -9,7 +9,7 @@ $a=mysqli_connect($host,$user,$password,$db);
 mysqli_select_db($a,$db);
 
 $quiz_id=$_GET['quiz_id'];
-$question_name=$_GET['databasefield'];
+$question_name=$_GET['question'];
 $question_type=$_GET['question_type'];
 
 $sql = "SELECT ID FROM Quiz_$quiz_id";
@@ -39,6 +39,6 @@ else {
             ADD $question_name $sql_string;";
     $result=mysqli_query($a, $sql);
 }
-header('Location: upgrade_quiz_form.php');
+header("Location: upgrade_quiz_form.php?quiz_id={$quiz_id}");
 
 ?>
